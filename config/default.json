@@ -1,0 +1,14 @@
+{
+    "Development" : {
+        "dbConfig" : {
+            "host" : "192.241.189.34",
+            "port" : "27017",
+            "user" : "db_user",
+            "password" : "1234",
+            "db" : "mongo-uploader-db"
+        },
+        "upload" : {
+            "dest" : "/tmp/uploads/"
+        }
+    }
+}
