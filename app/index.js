@@ -36,8 +36,7 @@ module.exports = (function() {
                 });
             });
 
-            app.post('/profile', this.upload.single('avatar'), function(req, res, next) {
-                console.log(req.body.name);
+            app.post('/upload', this.upload.single('file'), function(req, res, next) {
                 let _file = new FileModel({
                     name : req.body.name,
                     bin : fs.readFileSync(req.file.path)
