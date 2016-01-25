@@ -17,7 +17,7 @@ module.exports = (function() {
         });
     });
 
-    router.post('/upload', upload.single, (req, res, next) => {
+    router.post('/upload', upload.single('file'), (req, res, next) => {
         fs.readFile(req.file.path, (err, data) => {
             let _file = new FileModel({
                 name : req.body.name,
@@ -25,7 +25,7 @@ module.exports = (function() {
             });
 
             _file.save(function(err, data) {
-                if (this.err) res.send(err.Message);
+                if (err) res.send(err.Message);
                 res.send(data);
             });
         });
