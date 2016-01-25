@@ -7,8 +7,8 @@ Express framework this is an example application of how to upload large files (s
 - Set mongodb path in `./config/default.json`.
 - `npm install` to install dependencies.
 - `npm start` to run application on port `3000`.
-- `POST` request to `/upload` using `file` and `name` body parameters.
-- `GET` request to `/<filename>` where `<filename>` is the `name` parameter used in post request.
+- `POST` request to `/file/upload` using `file` and `name` body parameters and header `form-data`.
+- `GET` request to `/file/<filename>` where `<filename>` is the `name` parameter used in post request.
 
 ## Database
 
