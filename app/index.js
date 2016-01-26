@@ -12,10 +12,7 @@ let dbConfig = config.get('Development.dbConfig');
 
 module.exports = (function() {
     class Server {
-        constructor(serverPort) {
-            this.serverPort = serverPort;
-            // this.upload = multer({dest : uploadConfig.dest});
-        }
+        constructor(serverPort) { this.serverPort = serverPort; }
 
         init() {
             let app  = express();
