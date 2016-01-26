@@ -3,7 +3,6 @@
 let express     = require('express');
 let mongoose    = require('mongoose');
 let config      = require('config');
-let bodyParser  = require('body-parser');
 let multer      = require('multer');
 let fs          = require('fs');
 let router      = require('./router');
@@ -16,18 +15,13 @@ module.exports = (function() {
 
         init() {
             let app  = express();
-            let port = this.serverPort;
-            this._connectDB();
+            mongoose.connect("mongodb://" + dbConfig.user + ":" + dbConfig.password + "@" + dbConfig.host + "/" + dbConfig.db);
 
             app.use('/', router);
 
-            app.listen(port, function() {
-                console.log("Application started on port " + port);
+            app.listen(this.serverPort, () => {
+                console.log("Application started on port " + this.serverPort);
             });
-        }
-
-        _connectDB() {
-            mongoose.connect("mongodb://" + dbConfig.user + ":" + dbConfig.password + "@" + dbConfig.host + "/" + dbConfig.db);
         }
     }
 
