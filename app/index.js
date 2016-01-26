@@ -10,20 +10,20 @@ let router      = require('./router');
 let dbConfig = config.get('Development.dbConfig');
 
 module.exports = (function() {
-    class Server {
-        constructor(serverPort) { this.serverPort = serverPort; }
+  class Server {
+    constructor(serverPort) { this.serverPort = serverPort; }
 
-        init() {
-            let app  = express();
-            mongoose.connect("mongodb://" + dbConfig.user + ":" + dbConfig.password + "@" + dbConfig.host + "/" + dbConfig.db);
+    init() {
+      let app = express();
+      mongoose.connect("mongodb://" + dbConfig.user + ":" + dbConfig.password + "@" + dbConfig.host + "/" + dbConfig.db);
 
-            app.use('/', router);
+      app.use('/', router);
 
-            app.listen(this.serverPort, () => {
-                console.log("Application started on port " + this.serverPort);
-            });
-        }
+      app.listen(this.serverPort, () => {
+        console.log("Application started on port " + this.serverPort);
+      });
     }
+}
 
-    return Server;
+  return Server;
 });
