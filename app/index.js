@@ -11,19 +11,17 @@ let dbConfig = config.get('Development.dbConfig');
 
 module.exports = (function() {
   class Server {
-    constructor(serverPort) { this.serverPort = serverPort; }
-
-    init() {
+    static init(port) {
       let app = express();
       mongoose.connect("mongodb://" + dbConfig.user + ":" + dbConfig.password + "@" + dbConfig.host + "/" + dbConfig.db);
 
       app.use('/', router);
 
-      app.listen(this.serverPort, () => {
-        console.log("Application started on port " + this.serverPort);
+      app.listen(port, () => {
+        console.log("Application started on port " + port);
       });
     }
 }
 
   return Server;
-});
+})();
